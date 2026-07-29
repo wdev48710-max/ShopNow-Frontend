@@ -10,11 +10,13 @@ const Checkout = () => {
   const { token } = useAuth();
   const { cart, totalPrice, clearCart } = useCart();
   const navigate = useNavigate();
+  const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
   
   const handlePlaceOrder = async () => {
     if (!token) return toast.error("Please login first!");
     if (cart.length === 0) return toast.error("Cart is empty!");
+    if (!address) return toast.error("Please enter delivery address!");
     setLoading(true);
 
     try {
@@ -26,7 +28,7 @@ const Checkout = () => {
 
       await axios.post(
         `${API_URL}/api/orders`,
-        { products, total: totalPrice },
+        { products, total: totalPrice, address },
         { headers: { Authorization: `Bearer ${token}` } }
       );
       
@@ -54,6 +56,13 @@ const Checkout = () => {
               <p className="font-bold text-[#EC4899]">${(item.price * item.quantity).toFixed(2)}</p>
             </div>
           ))}
+          <textarea
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            placeholder="Delivery Address"
+            className="w-full px-4 py-3 border border-gray-200 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-[#4C1D95]"
+            rows="3"
+          />
           <div className="text-right mt-6">
             <p className="text-2xl font-bold text-[#4C1D95] mb-4">Total: ${totalPrice.toFixed(2)}</p>
             <button

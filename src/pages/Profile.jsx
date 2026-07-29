@@ -19,10 +19,11 @@ const Profile = () => {
     const payload = JSON.parse(atob(token.split(".")[1]));
     setUserName(payload.name);
     setUserEmail(payload.email);
-    axios.get(`${API_URL}/api/orders`, {
+    const url = role === "admin" ? `${API_URL}/api/orders/all` : `${API_URL}/api/orders`;
+    axios.get(url, {
       headers: { Authorization: "Bearer " + token }
     }).then((res) => setOrders(res.data));
-  }, [token, navigate]);
+  }, [token, navigate, role]);
   const handleBecomeAdmin = async () => {
     if (!adminKey) return toast.error("Enter Password!");
     try {
@@ -90,12 +91,16 @@ const Profile = () => {
         </div>
       )}
 
-      <h2 className="text-2xl font-bold text-[#4C1D95] mb-4">Order History</h2>
+      <h2 className="text-2xl font-bold text-[#4C1D95] mb-4">{role === "admin" ? "All Orders" : "Order History"}</h2>
       {orders.length === 0 ? (
         <p className="text-gray-400 text-center py-8">No orders yet.</p>
       ) : orders.map((order) => (
         <div key={order._id} className="bg-white rounded-lg shadow p-4 mb-4">
+          {role === "admin" && order.user && (
+            <p className="text-sm font-medium text-[#4C1D95]">Customer: {order.user.name} ({order.user.email})</p>
+          )}
           <p className="text-sm text-gray-500">ID: {order._id} | {order.status} | ${order.total}</p>
+          <p className="text-sm text-gray-500">Address: {order.address}</p>
           {order.products?.map((item, i) => (
             <div key={i} className="border-t py-2 text-gray-700">
               <p>{item.product?.name} - Qty: {item.quantity} - ${item.price}</p>
