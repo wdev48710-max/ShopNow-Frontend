@@ -90,7 +90,7 @@ const Profile = () => {
           <button onClick={handleLeaveAdmin} className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700">Leave Admin</button>
         </div>
       )}
-
+      
       <h2 className="text-2xl font-bold text-[#4C1D95] mb-4">{role === "admin" ? "All Orders" : "Order History"}</h2>
       {orders.length === 0 ? (
         <p className="text-gray-400 text-center py-8">No orders yet.</p>
@@ -100,7 +100,7 @@ const Profile = () => {
             <p className="text-sm font-medium text-[#4C1D95]">Customer: {order.user.name} ({order.user.email})</p>
           )}
           <p className="text-sm text-gray-500">ID: {order._id} | {order.status} | ${order.total}</p>
-          <p className="text-sm text-gray-500">Address: {order.address}</p>
+          <p className="text-sm text-gray-500 font-bold">Address: {order.address}</p>
           {order.products?.map((item, i) => (
             <div key={i} className="border-t py-2 text-gray-700">
               <p>{item.product?.name} - Qty: {item.quantity} - ${item.price}</p>

@@ -18,7 +18,7 @@ const Checkout = () => {
     if (cart.length === 0) return toast.error("Cart is empty!");
     if (!address) return toast.error("Please enter delivery address!");
     setLoading(true);
-
+    
     try {
       const products = cart.map((item) => ({
         product: item._id,
@@ -60,7 +60,7 @@ const Checkout = () => {
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             placeholder="Delivery Address"
-            className="w-full px-4 py-3 border border-gray-200 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-[#4C1D95]"
+            className="w-full px-4 py-3 border border-gray-400 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-[#4C1D95]"
             rows="3"
           />
           <div className="text-right mt-6">

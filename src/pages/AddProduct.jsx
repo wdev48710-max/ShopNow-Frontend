@@ -13,11 +13,6 @@ const AddProduct = () => {
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
-  // useEffect(() => {
-  //   axios.get(`${API_URL}/api/products`)
-  //     .then((res) => setProducts(res.data.products || res.data))
-  //     .catch((err) => console.log(err));
-  // }, []);
 
   useEffect(() => {
     axios.get(`${API_URL}/api/products`)
@@ -100,7 +95,7 @@ const handleSubmit = async (e) => {
           ))
         )}
       </div>
-
+      
       <div className="bg-white rounded-xl shadow p-6">
         <h2 className="text-xl font-semibold text-[#4C1D95] mb-4">Add New Product</h2>
         <form onSubmit={handleSubmit}>
