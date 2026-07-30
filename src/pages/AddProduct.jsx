@@ -32,7 +32,6 @@ const handleDelete = (id) => {
     toast.error("Failed to delete!");
   });
 };
-
 const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name || !price) return toast.error("Name and price are required!");
@@ -95,7 +94,7 @@ const handleSubmit = async (e) => {
           ))
         )}
       </div>
-      
+
       <div className="bg-white rounded-xl shadow p-6">
         <h2 className="text-xl font-semibold text-[#4C1D95] mb-4">Add New Product</h2>
         <form onSubmit={handleSubmit}>
