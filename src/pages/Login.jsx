@@ -10,7 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
-
+  
   const handleLogin = async () => {
     try {
       const res = await axios.post(`${API_URL}/api/auth/login`, {
@@ -24,7 +24,7 @@ const Login = () => {
     }
   };
 
-  
+
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
       <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">

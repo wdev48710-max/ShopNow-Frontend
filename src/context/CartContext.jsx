@@ -16,7 +16,7 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
-
+  
   // Add to cart
   const addToCart = (product) => {
     setCart((prev) => {
@@ -32,7 +32,6 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  
   // RemoveFromCart
   const removeFromCart = (id) => {
     setCart((prev) => prev.filter((item) => item._id !== id));

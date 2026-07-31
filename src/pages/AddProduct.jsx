@@ -13,7 +13,7 @@ const AddProduct = () => {
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
-
+  
   useEffect(() => {
     axios.get(`${API_URL}/api/products`)
     .then((res) => setProducts(res.data.products || res.data))
@@ -25,7 +25,7 @@ const handleDelete = (id) => {
     headers: { Authorization: "Bearer " + token }
   })
   .then(() => {
-    toast.success("Product Deleted!"); // P capital kar diya (optional)
+    toast.success("Product Deleted!");
     setProducts(products.filter((p) => p.id !== id));
   })
   .catch(() => {
@@ -63,7 +63,7 @@ const handleSubmit = async (e) => {
       setLoading(false);
     }
   };
-
+  
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold text-[#4C1D95] mb-6">Product Management</h1>

@@ -15,7 +15,7 @@ const Home = () => {
       .then((res) => setProducts(res.data))
       .catch((err) => console.log(err));
   }, []);
-
+  
 
   const filtered = products.filter((p) =>
    p.name.toLowerCase().includes(search.toLowerCase()),
@@ -24,17 +24,17 @@ const Home = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold text-[#4C1D95] mb-2">
+        <h1 className="text-2xl sm:text-4xl font-bold text-[#4C1D95] mb-2">
           Welcome to ShopNow
         </h1>
-        <p className="text-gray-600">
+        <p className="text-gray-600 text-sm sm:text-base">
           Discover amazing products at great prices
         </p>
         <input
           type="text"
           placeholder="Search"
           onInput={(e) => setSearch(e.target.value)}
-          className="mt-5 pt-2 pb-1 px-3 border border-[#4C1D95] rounded-lg bg-neutral-50 text-stone-800 placeholder-stone-400 focus:outline-none focus:border-[#4C1D95] focus:ring-2 focus:ring-[#4C1D95]/10 transition-all"
+          className="mt-5 w-full max-w-md mx-auto block pt-2 pb-1 px-3 border border-[#4C1D95] rounded-lg bg-neutral-50 text-stone-800 placeholder-stone-400 focus:outline-none focus:border-[#4C1D95] focus:ring-2 focus:ring-[#4C1D95]/10 transition-all"
         />
       </div>
       {products.length === 0 ? (

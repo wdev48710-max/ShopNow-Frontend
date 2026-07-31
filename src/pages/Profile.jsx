@@ -38,7 +38,7 @@ const Profile = () => {
       toast.error(err.response?.data?.message || "Failed!");
     }
   };
-
+  
   const handleLeaveAdmin = async () => {
     try {
       const res = await axios.post(`${API_URL}/api/auth/leave-admin`,
@@ -91,11 +91,11 @@ const Profile = () => {
         </div>
       )}
       
-      <h2 className="text-2xl font-bold text-[#4C1D95] mb-4">{role === "admin" ? "All Orders" : "Order History"}</h2>
+      <h2 className="text-xl sm:text-2xl font-bold text-[#4C1D95] mb-4">{role === "admin" ? "All Orders" : "Order History"}</h2>
       {orders.length === 0 ? (
         <p className="text-gray-400 text-center py-8">No orders yet.</p>
       ) : orders.map((order) => (
-        <div key={order._id} className="bg-white rounded-lg shadow p-4 mb-4">
+        <div key={order._id} className="bg-white rounded-lg shadow p-4 mb-4 break-words">
           {role === "admin" && order.user && (
             <p className="text-sm font-medium text-[#4C1D95]">Customer: {order.user.name} ({order.user.email})</p>
           )}

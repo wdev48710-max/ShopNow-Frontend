@@ -41,7 +41,7 @@ const Checkout = () => {
       setLoading(false);
     }
   };
-
+  
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold text-[#4C1D95] mb-6">Checkout</h1>
@@ -51,8 +51,8 @@ const Checkout = () => {
         <>
           {cart.map((item) => (
             <div key={item._id} className="bg-white rounded-lg shadow p-4 mb-4 flex items-center gap-4">
-              {item.image && <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded" />}
-              <p className="flex-1 text-[#4C1D95]">{item.name} x{item.quantity}</p>
+              {item.image && <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded shrink-0" />}
+              <p className="flex-1 text-[#4C1D95] break-words">{item.name} x{item.quantity}</p>
               <p className="font-bold text-[#EC4899]">${(item.price * item.quantity).toFixed(2)}</p>
             </div>
           ))}
