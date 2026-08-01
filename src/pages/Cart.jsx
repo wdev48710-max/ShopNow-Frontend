@@ -25,7 +25,7 @@ const Cart = () => {
                 <div className="flex items-center gap-2">
                   <button onClick={() => updateQuantity(item._id, item.quantity - 1) || navigate('/home')} className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300">-</button>
                   <span className="w-8 text-center">{item.quantity}</span>
-                  <button onClick={() => updateQuantity(item._id, item.quantity + 1) || navigate('/home')} className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300">+</button>
+                  <button onClick={() => updateQuantity(item._id, item.quantity + 1)} className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300">+</button>
                 </div>
                 <p className="font-bold text-[#4C1D95]">${(item.price * item.quantity).toFixed(2)}</p>
                 <button onClick={() => removeFromCart(item._id)} className="text-red-500 hover:underline">Remove</button>
