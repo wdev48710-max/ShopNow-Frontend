@@ -14,7 +14,6 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("token")
     setToken(null)
   }
-  
   // Token se role nikaalo
   let role = "user"
   if (token) {
@@ -25,7 +24,7 @@ export const AuthProvider = ({ children }) => {
       role = "user"
     }
   }
-  
+
   return (
     <AuthContext.Provider value={{ token, login, logout, isAuth: !!token, role }}>
       {children}

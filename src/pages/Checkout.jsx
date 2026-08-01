@@ -18,7 +18,7 @@ const Checkout = () => {
     if (cart.length === 0) return toast.error("Cart is empty!");
     if (!address) return toast.error("Please enter delivery address!");
     setLoading(true);
-    
+
     try {
       const products = cart.map((item) => ({
         product: item._id,
@@ -52,7 +52,7 @@ const Checkout = () => {
           {cart.map((item) => (
             <div key={item._id} className="bg-white rounded-lg shadow p-4 mb-4 flex items-center gap-4">
               {item.image && <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded shrink-0" />}
-              <p className="flex-1 text-[#4C1D95] break-words">{item.name} x{item.quantity}</p>
+              <p className="flex-1 text-[#4C1D95] wrap-break-word">{item.name} x{item.quantity}</p>
               <p className="font-bold text-[#EC4899]">${(item.price * item.quantity).toFixed(2)}</p>
             </div>
           ))}
