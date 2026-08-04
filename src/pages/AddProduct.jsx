@@ -26,12 +26,14 @@ const handleDelete = (id) => {
   })
   .then(() => {
     toast.success("Product Deleted!");
-    setProducts(products.filter((p) => p.id !== id));
+    setProducts(products.filter((p) => p._id !== id));
   })
   .catch(() => {
     toast.error("Failed to delete!");
   });
 };
+
+// Submit form
 const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name || !price) return toast.error("Name and price are required!");
@@ -66,10 +68,10 @@ const handleSubmit = async (e) => {
   
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-[#4C1D95] mb-6">Product Management</h1>
+      <h1 className="text-3xl font-bold text-darkColor mb-6">Product Management</h1>
 
       <div className="bg-white rounded-xl shadow p-4 mb-6">
-        <h2 className="text-xl font-semibold text-[#4C1D95] mb-4">All Products ({products.length})</h2>
+        <h2 className="text-xl font-semibold text-darkColor mb-4">All Products ({products.length})</h2>
         {products.length === 0 ? (
           <p className="text-gray-400 text-center py-4">No products yet.</p>
         ) : (
@@ -81,7 +83,7 @@ const handleSubmit = async (e) => {
                 <div className="w-14 h-14 bg-gray-200 rounded flex items-center justify-center text-gray-400 text-xs">No img</div>
               )}
               <div className="flex-1">
-                <p className="font-semibold text-[#4C1D95]">{p.name}</p>
+                <p className="font-semibold text-darkColor">{p.name}</p>
                 <p className="text-sm text-gray-500">${p.price} || {p.category}</p>
               </div>
               <button
@@ -96,32 +98,32 @@ const handleSubmit = async (e) => {
       </div>
 
       <div className="bg-white rounded-xl shadow p-6">
-        <h2 className="text-xl font-semibold text-[#4C1D95] mb-4">Add New Product</h2>
+        <h2 className="text-xl font-semibold text-darkColor mb-4">Add New Product</h2>
         <form onSubmit={handleSubmit}>
           <input
             value={name}
             placeholder="Product Name"
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-200 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-[#4C1D95]"
+            className="w-full px-4 py-3 border border-gray-200 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-darkBlue"
           />
           <input
             value={price}
             placeholder="Price"
             type="number"
             onChange={(e) => setPrice(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-200 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-[#4C1D95]"
+            className="w-full px-4 py-3 border border-gray-200 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-darkBlue"
           />
           <input
             value={description}
             placeholder="Description"
             onChange={(e) => setDescription(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-200 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-[#4C1D95]"
+            className="w-full px-4 py-3 border border-gray-200 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-darkBlue"
           />
           <input
             value={category}
             placeholder="Category"
             onChange={(e) => setCategory(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-200 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-[#4C1D95]"
+            className="w-full px-4 py-3 border border-gray-200 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-darkBlue"
           />
           <input
             type="file"
@@ -132,7 +134,7 @@ const handleSubmit = async (e) => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-[#EC4899] text-white font-semibold rounded-lg hover:bg-pink-500 disabled:opacity-50"
+            className="w-full py-3 bg-darkBlue text-white font-semibold rounded-lg hover:bg-lightBlue disabled:opacity-50"
           >
             {loading ? "Adding..." : "Add Product"}
           </button>

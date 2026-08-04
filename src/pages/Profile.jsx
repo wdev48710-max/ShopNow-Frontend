@@ -13,12 +13,11 @@ const Profile = () => {
   const [userEmail, setUserEmail] = useState("");
   const [adminKey, setAdminKey] = useState("");
   const [showAdminForm, setShowAdminForm] = useState(false);
-
   useEffect(() => {
     if (!token) return navigate("/login");
     const payload = JSON.parse(atob(token.split(".")[1]));
     setUserName(payload.name);
-    setUserEmail(payload.email);
+    setUserEmail(payload.email); 
     const url =
       role === "admin" ? `${API_URL}/api/orders/all` : `${API_URL}/api/orders`;
     axios
@@ -27,14 +26,13 @@ const Profile = () => {
       })
       .then((res) => setOrders(res.data));
   }, [token, navigate, role]);
+  
   const handleBecomeAdmin = async () => {
     if (!adminKey) return toast.error("Enter Password!");
     try {
       const res = await axios.post(
-        `${API_URL}/api/auth/become-admin`,
-        { adminKey },
-        { headers: { Authorization: "Bearer " + token } },
-      );
+        `${API_URL}/api/auth/become-admin`,{ adminKey },{ headers: { Authorization: "Bearer " + token } },);
+      
       login(res.data.token);
       toast.success("Welcome to Admin Panel!");
       setAdminKey("");
@@ -43,7 +41,7 @@ const Profile = () => {
       toast.error(err.response?.data?.message || "Failed!");
     }
   };
-
+  
   const handleLeaveAdmin = async () => {
     try {
       const res = await axios.post(
@@ -57,24 +55,24 @@ const Profile = () => {
       toast.error("Failed!");
     }
   };
-
+  
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-[#4C1D95]">My Profile</h1>
+        <h1 className="text-3xl font-bold text-darkColor">My Profile</h1>
         <button
           onClick={() => {
             logout();
             navigate("/");
           }}
-          className="bg-[#EC4899] text-white px-4 py-2 rounded hover:bg-pink-500"
+          className="bg-darkBlue text-white px-4 py-2 rounded hover:bg-lightBlue"
         >
           Logout
         </button>
       </div>
 
       <div className="bg-white rounded-lg shadow p-6 mb-6">
-        <h2 className="text-xl font-semibold text-[#4C1D95] mb-3">
+        <h2 className="text-xl font-semibold text-darkColor mb-3">
           Account Info
         </h2>
         <p className="text-gray-700">
@@ -89,7 +87,7 @@ const Profile = () => {
           <span className="font-medium">Role: </span>
           <span
             className={
-              role === "admin" ? "text-[#EC4899] font-bold" : "text-gray-500"
+              role === "admin" ? "text-darkBlue font-bold" : "text-gray-500"
             }
           >
             {role}
@@ -102,7 +100,7 @@ const Profile = () => {
           {!showAdminForm ? (
             <button
               onClick={() => setShowAdminForm(true)}
-              className="bg-[#4C1D95] text-white px-6 py-3 rounded-lg hover:bg-[#EC4899]"
+              className="bg-darkColor text-white px-6 py-3 rounded-lg hover:bg-darkBlue"
             >
               Become Admin
             </button>
@@ -113,12 +111,12 @@ const Profile = () => {
                 value={adminKey}
                 placeholder="Admin Password"
                 onChange={(e) => setAdminKey(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-200 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-[#4C1D95]"
+                className="w-full px-4 py-3 border border-gray-200 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-darkBlue"
               />
               <div className="flex gap-3">
                 <button
                   onClick={handleBecomeAdmin}
-                  className="px-6 py-3 bg-[#EC4899] text-white rounded-lg hover:bg-pink-500"
+                  className="px-6 py-3 bg-darkBlue text-white rounded-lg hover:bg-lightBlue"
                 >
                   Confirm
                 </button>
@@ -148,7 +146,7 @@ const Profile = () => {
         </div>
       )}
 
-      <h2 className="text-xl sm:text-2xl font-bold text-[#4C1D95] mb-4">
+      <h2 className="text-xl sm:text-2xl font-bold text-darkColor mb-4">
         {role === "admin" ? "All Orders" : "Order History"}
       </h2>
       {orders.length === 0 ? (
@@ -160,7 +158,7 @@ const Profile = () => {
             className="bg-white rounded-lg shadow p-4 mb-4 wrap-break-word"
           >
             {role === "admin" && order.user && (
-              <p className="text-sm font-medium text-[#4C1D95]">
+              <p className="text-sm font-medium text-darkColor">
                 Customer: {order.user.name} ({order.user.email})
               </p>
             )}

@@ -25,39 +25,39 @@ const Register = () => {
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
       <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
-        <h1 className="text-3xl font-bold text-center text-[#4C1D95] mb-2">Create Account</h1>
+        <h1 className="text-3xl font-bold text-center text-darkColor mb-2">Create Account</h1>
         <p className="text-center text-gray-500 mb-6">Join ShopNow today</p>
 
         <input
           value={name}
           placeholder="Full Name"
           onChange={(e) => setName(e.target.value)}
-          className="w-full px-4 py-3 border border-gray-200 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-[#4C1D95]"
+          className="w-full px-4 py-3 border border-gray-200 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-darkBlue"
         />
         <input
           value={email}
           placeholder="Email Address"
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full px-4 py-3 border border-gray-200 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-[#4C1D95]"
+          className="w-full px-4 py-3 border border-gray-200 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-darkBlue"
         />
         <input
           value={password}
           placeholder="Password"
           type="password"
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full px-4 py-3 border border-gray-200 rounded-lg mb-6 focus:outline-none focus:ring-2 focus:ring-[#4C1D95]"
+          className="w-full px-4 py-3 border border-gray-200 rounded-lg mb-6 focus:outline-none focus:ring-2 focus:ring-darkBlue"
         />
 
         <button
           onClick={handleRegister}
-          className="w-full py-3 bg-[#EC4899] text-white font-semibold rounded-lg hover:bg-pink-500 transition cursor-pointer"
+          className="w-full py-3 bg-darkBlue text-white font-semibold rounded-lg hover:bg-lightBlue transition cursor-pointer"
         >
           Register
         </button>
 
         <p className="text-center text-sm text-gray-500 mt-4">
           Already have an account?{" "}
-          <Link to="/login" className="text-[#4C1D95] hover:underline font-medium">Login</Link>
+          <Link to="/login" className="text-darkColor hover:underline font-medium">Login</Link>
         </p>
       </div>
     </div>

@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+/* Tulos theme - custom color tokens */
+@theme {
+  --color-darkColor: #151515;
+  --color-lightColor: #52525b;
+  --color-lightOrange: #fca99b;
+  --color-lightBlue: #7688DB;
+  --color-darkBlue: #6c7fd8;
+  --color-darkText: #686e7d;
+  --color-lightBg: #F8F8FB;
+}
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Raleway", sans-serif;
+  background-color: #F8F8FB;
 }

@@ -12,7 +12,7 @@ const Checkout = () => {
   const navigate = useNavigate();
   const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
-  
+
   const handlePlaceOrder = async () => {
     if (!token) return toast.error("Please login first!");
     if (cart.length === 0) return toast.error("Cart is empty!");
@@ -44,7 +44,7 @@ const Checkout = () => {
   
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-[#4C1D95] mb-6">Checkout</h1>
+      <h1 className="text-3xl font-bold text-darkColor mb-6">Checkout</h1>
       {cart.length === 0 ? (
         <p className="text-center text-gray-400 py-16">Your cart is empty.</p>
       ) : (
@@ -52,23 +52,23 @@ const Checkout = () => {
           {cart.map((item) => (
             <div key={item._id} className="bg-white rounded-lg shadow p-4 mb-4 flex items-center gap-4">
               {item.image && <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded shrink-0" />}
-              <p className="flex-1 text-[#4C1D95] wrap-break-word">{item.name} x{item.quantity}</p>
-              <p className="font-bold text-[#EC4899]">${(item.price * item.quantity).toFixed(2)}</p>
+              <p className="flex-1 text-darkColor wrap-break-word">{item.name} x{item.quantity}</p>
+              <p className="font-bold text-darkBlue">${(item.price * item.quantity).toFixed(2)}</p>
             </div>
           ))}
           <textarea
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             placeholder="Delivery Address"
-            className="w-full px-4 py-3 border border-gray-400 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-[#4C1D95]"
+            className="w-full px-4 py-3 border border-gray-400 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-darkBlue"
             rows="3"
           />
           <div className="text-right mt-6">
-            <p className="text-2xl font-bold text-[#4C1D95] mb-4">Total: ${totalPrice.toFixed(2)}</p>
+            <p className="text-2xl font-bold text-darkColor mb-4">Total: ${totalPrice.toFixed(2)}</p>
             <button
               onClick={handlePlaceOrder}
               disabled={loading}
-              className="px-8 py-3 bg-[#EC4899] text-white rounded-lg hover:bg-pink-500 disabled:opacity-50"
+              className="px-8 py-3 bg-darkBlue text-white rounded-lg hover:bg-lightBlue disabled:opacity-50"
             >
               {loading ? "Placing..." : "Place Order"}
             </button>

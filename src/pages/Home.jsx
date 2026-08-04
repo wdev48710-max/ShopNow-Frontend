@@ -16,7 +16,6 @@ const Home = () => {
       .catch((err) => console.log(err));
   }, []);
   
-
   const filtered = products.filter((p) =>
    p.name.toLowerCase().includes(search.toLowerCase()),
   )
@@ -24,7 +23,7 @@ const Home = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <div className="text-center mb-10">
-        <h1 className="text-2xl sm:text-4xl font-bold text-[#4C1D95] mb-2">
+        <h1 className="text-2xl sm:text-4xl font-bold text-darkColor mb-2">
           Welcome to ShopNow
         </h1>
         <p className="text-gray-600 text-sm sm:text-base">
@@ -34,7 +33,7 @@ const Home = () => {
           type="text"
           placeholder="Search"
           onInput={(e) => setSearch(e.target.value)}
-          className="mt-5 w-full max-w-md mx-auto block pt-2 pb-1 px-3 border border-[#4C1D95] rounded-lg bg-neutral-50 text-stone-800 placeholder-stone-400 focus:outline-none focus:border-[#4C1D95] focus:ring-2 focus:ring-[#4C1D95]/10 transition-all"
+          className="mt-5 w-full max-w-md mx-auto block pt-2 pb-1 px-3 border border-darkColor rounded-lg bg-neutral-50 text-stone-800 placeholder-stone-400 focus:outline-none focus:border-darkColor focus:ring-2 focus:ring-darkBlue/10 transition-all"
         />
       </div>
       {products.length === 0 ? (
@@ -65,16 +64,16 @@ const Home = () => {
               </Link>
               <div className="p-4">
                 <Link to={`/product/${product._id}`}>
-                  <h3 className="text-lg font-semibold text-[#4C1D95] hover:text-[#EC4899]">
+                  <h3 className="text-lg font-semibold text-darkColor hover:text-darkBlue">
                     {product.name}
                   </h3>
-                  <p className="text-xl font-bold text-[#EC4899] mt-1">
+                  <p className="text-xl font-bold text-darkBlue mt-1">
                     ${product.price}
                   </p>
                 </Link>
                 <button
                   onClick={() => addToCart(product)}
-                  className="mt-3 w-full bg-[#4C1D95] text-white py-2 rounded-lg hover:bg-[#EC4899] transition"
+                  className="mt-3 w-full bg-darkColor text-white py-2 rounded-lg hover:bg-darkBlue transition"
                 >
                   Add to Cart
                 </button>

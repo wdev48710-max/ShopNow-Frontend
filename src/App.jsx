@@ -18,7 +18,7 @@ const App = () => {
     <BrowserRouter>
       <AuthProvider>
         <CartProvider>
-          <div className="min-h-screen bg-[#F3E8FF] flex flex-col">
+          <div className="min-h-screen bg-lightBg flex flex-col">
             <Navbar />
             <Toaster position="top-center" />
             <main className="flex-1">
