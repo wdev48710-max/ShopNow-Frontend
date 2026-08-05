@@ -29,7 +29,10 @@ const Navbar = () => {
           {isAuth ? (
             <>
               {role === "admin" && (
-                <Link to="/add-product" className="hover:text-lightBlue">Add Product</Link>
+                <>
+                  <Link to="/add-product" className="hover:text-lightBlue">Add Product</Link>
+                  <Link to="/orders" className="hover:text-lightBlue">Orders</Link>
+                </>
               )}
               <Link to="/profile" className="hover:text-lightBlue">Profile</Link>
               <button onClick={logout} className="bg-darkBlue px-3 py-1 rounded hover:bg-lightBlue">Logout</button>
@@ -52,8 +55,10 @@ const Navbar = () => {
           {isAuth ? (
             <>
               {role === "admin" && (
-                <Link to="/orders" className="hover:text-lightBlue">Orders</Link>,
-                <Link to="/add-product" onClick={() => setOpen(false)} className="hover:text-lightBlue">Add Product</Link>
+                <>
+                  <Link to="/orders" onClick={() => setOpen(false)} className="hover:text-lightBlue">Orders</Link>
+                  <Link to="/add-product" onClick={() => setOpen(false)} className="hover:text-lightBlue">Add Product</Link>
+                </>
               )}
               <Link to="/profile" onClick={() => setOpen(false)} className="hover:text-lightBlue">Profile</Link>
               <button onClick={logout} className="bg-darkBlue px-3 py-1 rounded hover:bg-lightBlue text-left">Logout</button>
