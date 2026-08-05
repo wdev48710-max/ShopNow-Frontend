@@ -121,7 +121,7 @@ const AddProduct = () => {
         </form>
       </div>
 
-      <div className="bg-white rounded-xl shadow p-4 mb-6">
+      <div className=" px-4 py-8 mt-6 bg-white rounded-xl shadow p-4 mb-6">
         <h2 className="text-xl font-semibold text-darkColor mb-4">
           All Products ({products.length})
         </h2>
