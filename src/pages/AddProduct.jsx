@@ -147,7 +147,7 @@ const AddProduct = () => {
               <div className="flex-1">
                 <p className="font-semibold text-darkColor">{p.name}</p>
                 <p className="text-sm text-gray-500">
-                ${p.price} ||{p.category}
+                  ${p.price} || {p.category}
                 </p>
               </div>
               <button
