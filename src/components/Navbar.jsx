@@ -42,7 +42,7 @@ const Navbar = () => {
             </Link>
           )}
         </div>
-
+        
         {/* Center: logo */}
         <div className="w-auto md:w-1/3 flex items-center justify-center gap-2.5">
           <Link to="/" className="text-2xl font-bold text-darkColor hoverEffect">
