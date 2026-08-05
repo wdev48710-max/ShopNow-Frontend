@@ -31,7 +31,6 @@ const Navbar = () => {
               {role === "admin" && (
                 <>
                   <Link to="/add-product" className="hover:text-lightBlue">Add Product</Link>
-                  <Link to="/orders" className="hover:text-lightBlue">Orders</Link>
                 </>
               )}
               <Link to="/profile" className="hover:text-lightBlue">Profile</Link>
@@ -56,7 +55,6 @@ const Navbar = () => {
             <>
               {role === "admin" && (
                 <>
-                  <Link to="/orders" onClick={() => setOpen(false)} className="hover:text-lightBlue">Orders</Link>
                   <Link to="/add-product" onClick={() => setOpen(false)} className="hover:text-lightBlue">Add Product</Link>
                 </>
               )}
