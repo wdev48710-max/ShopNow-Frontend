@@ -13,28 +13,30 @@ const AddProduct = () => {
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
-  
+
   useEffect(() => {
-    axios.get(`${API_URL}/api/products`)
-    .then((res) => setProducts(res.data.products || res.data))
-    .catch((err) => console.log(err));
-  },[]);
+    axios
+      .get(`${API_URL}/api/products`)
+      .then((res) => setProducts(res.data.products || res.data))
+      .catch((err) => console.log(err));
+  }, []);
 
-const handleDelete = (id) => {
-  axios.delete(`${API_URL}/api/products/${id}`, {
-    headers: { Authorization: "Bearer " + token }
-  })
-  .then(() => {
-    toast.success("Product Deleted!");
-    setProducts(products.filter((p) => p._id !== id));
-  })
-  .catch(() => {
-    toast.error("Failed to delete!");
-  });
-};
+  const handleDelete = (id) => {
+    axios
+      .delete(`${API_URL}/api/products/${id}`, {
+        headers: { Authorization: "Bearer " + token },
+      })
+      .then(() => {
+        toast.success("Product Deleted!");
+        setProducts(products.filter((p) => p._id !== id));
+      })
+      .catch(() => {
+        toast.error("Failed to delete!");
+      });
+  };
 
-// Submit form
-const handleSubmit = async (e) => {
+  // Submit form
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name || !price) return toast.error("Name and price are required!");
 
@@ -57,7 +59,8 @@ const handleSubmit = async (e) => {
       setDescription("");
       setCategory("");
       setImage(null);
-      axios.get(`${API_URL}/api/products`)
+      axios
+        .get(`${API_URL}/api/products`)
         .then((res) => setProducts(res.data.products || res.data));
     } catch (err) {
       toast.error(err.response?.data?.message || "Failed to add product!");
@@ -65,40 +68,17 @@ const handleSubmit = async (e) => {
       setLoading(false);
     }
   };
-  
+
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-darkColor mb-6">Product Management</h1>
-
-      <div className="bg-white rounded-xl shadow p-4 mb-6">
-        <h2 className="text-xl font-semibold text-darkColor mb-4">All Products ({products.length})</h2>
-        {products.length === 0 ? (
-          <p className="text-gray-400 text-center py-4">No products yet.</p>
-        ) : (
-          products.map((p) => (
-            <div key={p._id} className="flex items-center gap-4 bg-gray-50 p-3 rounded-lg mb-2 border border-gray-200">
-              {p.image ? (
-                <img src={p.image} alt={p.name} className="w-14 h-14 object-cover rounded" />
-              ) : (
-                <div className="w-14 h-14 bg-gray-200 rounded flex items-center justify-center text-gray-400 text-xs">No img</div>
-              )}
-              <div className="flex-1">
-                <p className="font-semibold text-darkColor">{p.name}</p>
-                <p className="text-sm text-gray-500">${p.price} || {p.category}</p>
-              </div>
-              <button
-                onClick={() => handleDelete(p._id)}
-                className="px-3 py-1 bg-red-500 text-white rounded text-sm hover:bg-red-600"
-              >
-                Delete
-              </button>
-            </div>
-          ))
-        )}
-      </div>
+      <h1 className="text-3xl font-bold text-darkColor mb-6">
+        Product Management
+      </h1>
 
       <div className="bg-white rounded-xl shadow p-6">
-        <h2 className="text-xl font-semibold text-darkColor mb-4">Add New Product</h2>
+        <h2 className="text-xl font-semibold text-darkColor mb-4">
+          Add New Product
+        </h2>
         <form onSubmit={handleSubmit}>
           <input
             value={name}
@@ -139,6 +119,46 @@ const handleSubmit = async (e) => {
             {loading ? "Adding..." : "Add Product"}
           </button>
         </form>
+      </div>
+
+      <div className="bg-white rounded-xl shadow p-4 mb-6">
+        <h2 className="text-xl font-semibold text-darkColor mb-4">
+          All Products ({products.length})
+        </h2>
+        {products.length === 0 ? (
+          <p className="text-gray-400 text-center py-4">No products yet.</p>
+        ) : (
+          products.map((p) => (
+            <div
+              key={p._id}
+              className="flex items-center gap-4 bg-gray-50 p-3 rounded-lg mb-2 border border-gray-200"
+            >
+              {p.image ? (
+                <img
+                  src={p.image}
+                  alt={p.name}
+                  className="w-14 h-14 object-cover rounded"
+                />
+              ) : (
+                <div className="w-14 h-14 bg-gray-200 rounded flex items-center justify-center text-gray-400 text-xs">
+                  No img
+                </div>
+              )}
+              <div className="flex-1">
+                <p className="font-semibold text-darkColor">{p.name}</p>
+                <p className="text-sm text-gray-500">
+                  ${p.price} || {p.category}
+                </p>
+              </div>
+              <button
+                onClick={() => handleDelete(p._id)}
+                className="px-3 py-1 bg-red-500 text-white rounded text-sm hover:bg-red-600"
+              >
+                Delete
+              </button>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
