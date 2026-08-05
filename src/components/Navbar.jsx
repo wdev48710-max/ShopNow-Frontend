@@ -52,6 +52,7 @@ const Navbar = () => {
           {isAuth ? (
             <>
               {role === "admin" && (
+                <Link to="/orders" className="hover:text-lightBlue">Orders</Link>,
                 <Link to="/add-product" onClick={() => setOpen(false)} className="hover:text-lightBlue">Add Product</Link>
               )}
               <Link to="/profile" onClick={() => setOpen(false)} className="hover:text-lightBlue">Profile</Link>

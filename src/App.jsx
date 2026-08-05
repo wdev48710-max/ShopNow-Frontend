@@ -12,6 +12,7 @@ import Checkout from "./pages/Checkout"
 import AddProduct from "./pages/AddProduct"
 import { Toaster } from "react-hot-toast"
 import Footer from "./components/Footer"
+import orders from "./pages/Orders"
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/product/:id" element={<ProductDetail />} />
+                <Route path="/orders" element={<orders />} />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/add-product" element={<AddProduct />} />
               </Routes>
