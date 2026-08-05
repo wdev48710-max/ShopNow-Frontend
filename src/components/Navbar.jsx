@@ -17,14 +17,14 @@ const Navbar = () => {
 
   return (
     <header className="border-b border-b-gray-400 py-5 sticky top-0 z-50 bg-white">
-      <div className="max-w-screen-xl mx-auto px-4 flex items-center justify-between gap-7 text-lightColor">
+      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between gap-7 text-lightColor">
         {/* Mobile menu button */}
         <div className="w-auto md:w-1/3 md:hidden">
           <button onClick={() => setOpen(!open)} aria-label="Menu">
             <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
           </button>
         </div>
-
+        
         {/* Left: nav links */}
         <div className="hidden md:inline-flex w-1/3 items-center gap-5 text-sm capitalize font-semibold">
           {menuLinks.map((item) => (
