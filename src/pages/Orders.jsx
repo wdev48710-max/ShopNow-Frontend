@@ -20,12 +20,12 @@ const Orders = () => {
     }
 
   return (
-    <div>
-        <h1>Orders</h1>
+    <div className="max-w-4xl mx-auto px-4 py-8">
+        <h1 className="text-3xl font-bold text-darkColor mb-6">Orders</h1>
         {orders.map((order)=> (
-            <div key={order._id}>
+            <div key={order._id} className="bg-white rounded-lg shadow p-4 mb-4">
                 <p><b>{order.user?.name}</b> - {new Date(order.createdAt).toLocaleDateString()}</p>
-                <p>Total: ${order.total}</p>
+                <p className="font-bold text-darkBlue">Total: ${order.total}</p>
             <select
             value={order.status}
             onChange={(e) => handleStatus(order._id, e.target.value)}
